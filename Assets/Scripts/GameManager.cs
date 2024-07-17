@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Alert");
             return;
         }
-#endif
         Display.displays[1].Activate();
+#endif
 
         LoadWords();
     }

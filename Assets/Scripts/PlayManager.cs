@@ -54,7 +54,8 @@ public class PlayManager : MonoBehaviour
                     SceneManager.LoadScene("Scenes/Main");
                 }
             }
-            else return;
+            
+            return;
         }
 
         if (!Paused)
@@ -90,6 +91,7 @@ public class PlayManager : MonoBehaviour
                     }
                     else
                     {
+                        UIManager.Instance.SetStatusFadeOnce("Correct!", new Color(0.2f, 0.8f, 0.2f));
                         NextTopic();
                     }
                 }
@@ -98,6 +100,7 @@ public class PlayManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     Time += GameManager.Instance.SkipPenalty;
+                    UIManager.Instance.SetStatusFadeOnce("Skip", new Color(0.5f, 0.5f, 0.5f));
                     NextTopic();
                 }
 
