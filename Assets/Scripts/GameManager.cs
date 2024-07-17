@@ -1,10 +1,13 @@
+using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private string[] _words;
+    private readonly List<string> _words = new();
+    private int _currentWordIndex;
 
     private void Awake()
     {
@@ -29,19 +32,36 @@ public class GameManager : MonoBehaviour
         }
 #endif
 
-        GetWords();
-
+        LoadWords();
     }
 
-    private void GetWords()
+    private void LoadWords()
     {
-        // TODO: Implement GetWords()
+        var sr = new StreamReader(Application.streamingAssetsPath + "/words.txt");
+
+        _words.Clear();
+        while (!sr.EndOfStream)
+        {
+            _words.Add(sr.ReadLine());
+        }
+        
+        // Shuffle the words
+        for (var i = _words.Count - 1; i >= 0; i++)
+        {
+            var randomIndex = Random.Range(0, i + 1);
+            (_words[randomIndex], _words[i]) = (_words[i], _words[randomIndex]);
+        }
+        
+        _currentWordIndex = 0;
     }
     
-    public string GetRandomWord()
+    public string GetWord()
     {
-        // TODO: Implement GetRandomWord()
-        
-        return "Random Word";
+        var ret = _words[_currentWordIndex];
+
+        _currentWordIndex++;
+        _currentWordIndex %= _words.Count;
+
+        return ret;
     }
 }
