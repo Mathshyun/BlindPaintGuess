@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayManager : MonoBehaviour
 {
+    public static PlayManager Instance { get; private set; }
+    
     public const int MaxProgress = 10;
     public const float SkipPenalty = 10f;
     
@@ -14,7 +17,12 @@ public class PlayManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+    }
 
+    private void Start()
+    {
+        StartCoroutine(StartCountdown());
     }
 
     private void Update()
@@ -38,6 +46,18 @@ public class PlayManager : MonoBehaviour
         {
             // TODO: Skip
         }
+    }
+
+    private IEnumerator StartCountdown()
+    {
+        // TODO: Implement countdown logic
+        
+        yield return null;
+    }
+
+    private void StartGame()
+    {
+        
     }
 
     private void ClearDraw()

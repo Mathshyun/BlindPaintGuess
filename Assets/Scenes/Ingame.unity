@@ -911,12 +911,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ba145940d128748925fc3eb4a70ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playManager: {fileID: 0}
-  timeText1: {fileID: 0}
-  timeText2: {fileID: 0}
-  topicText1: {fileID: 0}
-  progressText1: {fileID: 0}
-  progressText2: {fileID: 0}
+  playManager: {fileID: 773134095}
+  timeText1: {fileID: 2064155318}
+  timeText2: {fileID: 742280806}
+  topicText1: {fileID: 1928240930}
+  progressText1: {fileID: 622568735}
+  progressText2: {fileID: 1586574952}
 --- !u!4 &921789068
 Transform:
   m_ObjectHideFlags: 0
