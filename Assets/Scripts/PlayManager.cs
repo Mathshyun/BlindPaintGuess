@@ -93,7 +93,6 @@ public class PlayManager : MonoBehaviour
         
         yield return null;
 
-        Active = true;
         StartGame();
     }
 
@@ -101,6 +100,7 @@ public class PlayManager : MonoBehaviour
     {
         Progress = 0;
         Time = 0f;
+        Active = true;
         UIManager.Instance.SetUIActive(true);
         NextTopic();
     }

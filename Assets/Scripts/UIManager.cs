@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -15,8 +16,9 @@ public class UIManager : MonoBehaviour
     
     private void Update()
     {
-        timeText1.text = $"{(int)PlayManager.Instance.Time / 60}:{(int)PlayManager.Instance.Time % 60}";
-        timeText2.text = $"{(int)PlayManager.Instance.Time / 60}:{(int)PlayManager.Instance.Time % 60}";
+        var text = TimeSpan.FromSeconds(PlayManager.Instance.Time).ToString("mm':'ss");
+        timeText1.text = text;
+        timeText2.text = text;
     }
 
     public void SetAllText()

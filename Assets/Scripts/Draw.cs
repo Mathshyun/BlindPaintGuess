@@ -7,6 +7,8 @@ public class Draw : MonoBehaviour
     
     private void Update()
     {
+        if (!PlayManager.Instance.Active || PlayManager.Instance.Paused) return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             StartLine();
