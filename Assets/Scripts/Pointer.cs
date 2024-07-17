@@ -8,7 +8,7 @@ public class Pointer : MonoBehaviour
     private void Update()
     {
         var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        position.z = 0f;
+        position.z = -1f;
         transform.position = position;
 
         if (Input.GetMouseButtonUp(0))

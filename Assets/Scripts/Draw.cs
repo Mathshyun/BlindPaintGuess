@@ -25,12 +25,12 @@ public class Draw : MonoBehaviour
         _drawing = StartCoroutine(DrawLine());
     }
     
-    private void FinishLine()
+    public void FinishLine()
     {
         StopCoroutine(_drawing);
     }
 
-    IEnumerator DrawLine()
+    private IEnumerator DrawLine()
     {
         var newGameObject = Instantiate(Resources.Load("Line") as GameObject, new Vector3(0, 0, 0),
             Quaternion.identity, transform);
