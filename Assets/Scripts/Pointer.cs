@@ -11,7 +11,7 @@ public class Pointer : MonoBehaviour
         position.z = -1f;
         transform.position = position;
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && !PlayManager.Instance.Paused)
         {
             Instantiate(pointerMarkPrefab, transform.position, Quaternion.identity, pointerMarkParent);
         }

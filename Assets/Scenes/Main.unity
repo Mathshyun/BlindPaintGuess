@@ -318,12 +318,9 @@ MonoBehaviour:
 
     [Space] Practice
 
-    [F1] How to Play
+    [F1] Credits
 
-    [F2] Credits
-
-    [ESC]
-    Quit'
+    [ESC] Quit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
   m_sharedMaterial: {fileID: -4814647031588133277, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
@@ -518,12 +515,9 @@ MonoBehaviour:
 
     [Space] Practice
 
-    [F1] How to Play
+    [F1] Credits
 
-    [F2] Credits
-
-    [ESC]
-    Quit'
+    [ESC] Quit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
   m_sharedMaterial: {fileID: -4814647031588133277, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}

@@ -19,14 +19,8 @@ public class MainManager : MonoBehaviour
             SceneManager.LoadScene("Scenes/Play");
         }
         
-        // How to Play
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            SceneManager.LoadScene("Scenes/HowToPlay");
-        }
-        
         // Credits
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             SceneManager.LoadScene("Scenes/Credits");
         }

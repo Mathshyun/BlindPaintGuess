@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class PlayManager : MonoBehaviour
             Active = true;
             Paused = false;
             Topic = "Practice";
+            Cursor.visible = false;
+            UIManager.Instance.SetAllText();
             UIManager.Instance.SetUIActive(true);
             UIManager.Instance.SetStatusActive(false);
             ClearDraw();
@@ -41,7 +44,18 @@ public class PlayManager : MonoBehaviour
 
     private void Update()
     {
-        if (!Active) return;
+        if (!Active)
+        {
+            if (Progress >= GameManager.Instance.MaxProgress)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Cursor.visible = true;
+                    SceneManager.LoadScene("Scenes/Main");
+                }
+            }
+            else return;
+        }
 
         if (!Paused)
         {
@@ -93,7 +107,8 @@ public class PlayManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    // TODO: Quit practice mode
+                    Cursor.visible = true;
+                    SceneManager.LoadScene("Scenes/Main");
                 }
             }
         }
@@ -109,7 +124,8 @@ public class PlayManager : MonoBehaviour
             // Quit
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                // TODO: Quit game
+                Cursor.visible = true;
+                SceneManager.LoadScene("Scenes/Main");
             }
         }
     }
