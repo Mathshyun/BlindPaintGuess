@@ -7,14 +7,15 @@ public class PlayManager : MonoBehaviour
     
     public const int MaxProgress = 10;
     public const float SkipPenalty = 10f;
-    
-    public int progress;
-    public float time;
-    public string topic;
+
+    public int Progress { get; private set; }
+    public float Time { get; private set; }
+    public string Topic { get; private set; }
+
+    public bool Active { get; private set; }
+    public bool Paused { get; private set; }
 
     [SerializeField] private Draw draw;
-
-    private bool _active;
 
     private void Awake()
     {
@@ -23,49 +24,67 @@ public class PlayManager : MonoBehaviour
 
     private void Start()
     {
-        _active = false;
+        Active = false;
+        Paused = false;
         UIManager.Instance.SetUIActive(false);
         StartCoroutine(StartCountdown());
     }
 
     private void Update()
     {
-        if (!_active) return;
-        
-        // Clear
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            ClearDraw();
-        }
+        if (!Active) return;
 
-        // Pause
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (!Paused)
         {
-            // TODO: Pause game
-        }
-        
-        // Correct
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            progress++;
-            if (progress >= MaxProgress)
+            // Clear
+            if (Input.GetKeyDown(KeyCode.Backspace))
             {
-                // TODO: Finish game
+                ClearDraw();
             }
-            else
+
+            // Pause
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
+                // TODO: Pause game
+            }
+        
+            // Correct
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Progress++;
+                if (Progress >= MaxProgress)
+                {
+                    // TODO: Finish game
+                }
+                else
+                {
+                    NextTopic();
+                }
+            }
+
+            // Skip
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Time += SkipPenalty;
                 NextTopic();
             }
-        }
 
-        // Skip
-        if (Input.GetKeyDown(KeyCode.Space))
+            Time += UnityEngine.Time.deltaTime;
+        }
+        else
         {
-            time += SkipPenalty;
-            NextTopic();
+            // Resume
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Paused = false;
+            }
+            
+            // Quit
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                // TODO: Quit game
+            }
         }
-
-        time += Time.deltaTime;
     }
 
     private IEnumerator StartCountdown()
@@ -74,14 +93,14 @@ public class PlayManager : MonoBehaviour
         
         yield return null;
 
-        _active = true;
+        Active = true;
         StartGame();
     }
 
     private void StartGame()
     {
-        progress = 0;
-        time = 0f;
+        Progress = 0;
+        Time = 0f;
         UIManager.Instance.SetUIActive(true);
         NextTopic();
     }
@@ -89,7 +108,7 @@ public class PlayManager : MonoBehaviour
     private void NextTopic()
     {
         ClearDraw();
-        topic = GameManager.Instance.GetNextWord();
+        Topic = GameManager.Instance.GetNextWord();
         UIManager.Instance.SetAllText();
     }
 

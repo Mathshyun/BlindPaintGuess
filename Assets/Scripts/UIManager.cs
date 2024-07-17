@@ -15,15 +15,15 @@ public class UIManager : MonoBehaviour
     
     private void Update()
     {
-        timeText1.text = $"{(int)PlayManager.Instance.time / 60}:{(int)PlayManager.Instance.time % 60}";
-        timeText2.text = $"{(int)PlayManager.Instance.time / 60}:{(int)PlayManager.Instance.time % 60}";
+        timeText1.text = $"{(int)PlayManager.Instance.Time / 60}:{(int)PlayManager.Instance.Time % 60}";
+        timeText2.text = $"{(int)PlayManager.Instance.Time / 60}:{(int)PlayManager.Instance.Time % 60}";
     }
 
     public void SetAllText()
     {
-        topicText1.text = PlayManager.Instance.topic;
-        progressText1.text = $"{PlayManager.Instance.progress}/{PlayManager.MaxProgress}";
-        progressText2.text = $"{PlayManager.Instance.progress}/{PlayManager.MaxProgress}";
+        topicText1.text = PlayManager.Instance.Topic;
+        progressText1.text = $"{PlayManager.Instance.Progress}/{PlayManager.MaxProgress}";
+        progressText2.text = $"{PlayManager.Instance.Progress}/{PlayManager.MaxProgress}";
     }
 
     public void SetUIActive(bool active)
