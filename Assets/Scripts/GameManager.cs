@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public bool IsPracticeMode { get; private set; } = false;
+
     private readonly List<string> _words = new();
     private int _currentWordIndex;
 
@@ -46,7 +48,7 @@ public class GameManager : MonoBehaviour
         }
         
         // Shuffle the words
-        for (var i = _words.Count - 1; i >= 0; i++)
+        for (var i = _words.Count - 1; i >= 0; i--)
         {
             var randomIndex = Random.Range(0, i + 1);
             (_words[randomIndex], _words[i]) = (_words[i], _words[randomIndex]);
@@ -55,7 +57,7 @@ public class GameManager : MonoBehaviour
         _currentWordIndex = 0;
     }
     
-    public string GetWord()
+    public string GetNextWord()
     {
         var ret = _words[_currentWordIndex];
 

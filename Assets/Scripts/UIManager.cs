@@ -19,10 +19,19 @@ public class UIManager : MonoBehaviour
         timeText2.text = $"{(int)PlayManager.Instance.time / 60}:{(int)PlayManager.Instance.time % 60}";
     }
 
-    public void UpdateAllText()
+    public void SetAllText()
     {
         topicText1.text = PlayManager.Instance.topic;
         progressText1.text = $"{PlayManager.Instance.progress}/{PlayManager.MaxProgress}";
         progressText2.text = $"{PlayManager.Instance.progress}/{PlayManager.MaxProgress}";
+    }
+
+    public void SetUIActive(bool active)
+    {
+        timeText1.gameObject.SetActive(active);
+        timeText2.gameObject.SetActive(active);
+        topicText1.gameObject.SetActive(active);
+        progressText1.gameObject.SetActive(active);
+        progressText2.gameObject.SetActive(active);
     }
 }

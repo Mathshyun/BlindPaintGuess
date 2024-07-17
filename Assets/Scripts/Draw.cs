@@ -27,6 +27,8 @@ public class Draw : MonoBehaviour
     
     public void FinishLine()
     {
+        if (_drawing == null) return;
+        
         StopCoroutine(_drawing);
     }
 
