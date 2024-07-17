@@ -6,11 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public bool IsPracticeMode => isPracticeMode;
+    public bool isPracticeMode;
+    
     public int MaxProgress => maxProgress;
     public float SkipPenalty => skipPenalty;
 
-    [SerializeField] private bool isPracticeMode;
     [SerializeField] private int maxProgress;
     [SerializeField] private float skipPenalty;
     

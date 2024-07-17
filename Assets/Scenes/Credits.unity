@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Blind Paint Guess
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
   m_sharedMaterial: {fileID: -4814647031588133277, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
@@ -314,16 +314,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Enter] Start
-
-    [Space] Practice
-
-    [F1] How to Play
-
-    [F2] Credits
-
-    [ESC]
-    Quit'
+  m_text: "Made by \uAE40\uC138\uD604\nwith \uAE40\uB3D9\uC6B1, \uC774\uC218\uC778\n\nfor
+    UPnL 2024 Summer MT\n\n[ESC] Quit"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
   m_sharedMaterial: {fileID: -4814647031588133277, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
@@ -514,16 +506,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Enter] Start
-
-    [Space] Practice
-
-    [F1] How to Play
-
-    [F2] Credits
-
-    [ESC]
-    Quit'
+  m_text: "Made by \uAE40\uC138\uD604\nwith \uAE40\uB3D9\uC6B1, \uC774\uC218\uC778\n\nfor
+    UPnL 2024 Summer MT\n\n[ESC] Quit"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
   m_sharedMaterial: {fileID: -4814647031588133277, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
@@ -703,7 +687,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &885577509
+--- !u!1 &1093493563
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,34 +695,34 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 885577511}
-  - component: {fileID: 885577510}
+  - component: {fileID: 1093493565}
+  - component: {fileID: 1093493564}
   m_Layer: 0
-  m_Name: MainManager
+  m_Name: CreditsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &885577510
+--- !u!114 &1093493564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885577509}
+  m_GameObject: {fileID: 1093493563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f44a583f8b4374389a80c495e28d5c, type: 3}
+  m_Script: {fileID: 11500000, guid: e3a086794588a8d428bfa1907a0f95a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &885577511
+--- !u!4 &1093493565
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885577509}
+  m_GameObject: {fileID: 1093493563}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1150,7 +1134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Blind Paint Guess
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
   m_sharedMaterial: {fileID: -4814647031588133277, guid: b8e7c456e3cb7074d9830ae131f65e7f, type: 2}
@@ -1234,7 +1218,7 @@ SceneRoots:
   - {fileID: 1219391908}
   - {fileID: 1680196514}
   - {fileID: 604385378}
-  - {fileID: 885577511}
+  - {fileID: 1093493565}
   - {fileID: 871651188}
   - {fileID: 1359710019}
   - {fileID: 1941539240}

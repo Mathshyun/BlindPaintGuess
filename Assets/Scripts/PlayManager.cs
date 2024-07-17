@@ -22,7 +22,7 @@ public class PlayManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.IsPracticeMode)
+        if (GameManager.Instance.isPracticeMode)
         {
             Active = true;
             Paused = false;
@@ -51,7 +51,7 @@ public class PlayManager : MonoBehaviour
                 ClearDraw();
             }
 
-            if (!GameManager.Instance.IsPracticeMode)
+            if (!GameManager.Instance.isPracticeMode)
             {
                 // Pause
                 if (Input.GetKeyDown(KeyCode.Escape))
