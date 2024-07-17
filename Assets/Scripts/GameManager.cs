@@ -6,8 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public bool IsPracticeMode { get; private set; } = false;
+    public bool IsPracticeMode => isPracticeMode;
+    public int MaxProgress => maxProgress;
+    public float SkipPenalty => skipPenalty;
 
+    [SerializeField] private bool isPracticeMode;
+    [SerializeField] private int maxProgress;
+    [SerializeField] private float skipPenalty;
+    
     private readonly List<string> _words = new();
     private int _currentWordIndex;
 

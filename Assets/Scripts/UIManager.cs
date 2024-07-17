@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text topicText1;
     [SerializeField] private TMP_Text progressText1;
     [SerializeField] private TMP_Text progressText2;
+    [SerializeField] private TMP_Text statusText1;
+    [SerializeField] private TMP_Text statusText2;
 
     private void Awake() => Instance = this;
     
@@ -24,8 +26,20 @@ public class UIManager : MonoBehaviour
     public void SetAllText()
     {
         topicText1.text = PlayManager.Instance.Topic;
-        progressText1.text = $"{PlayManager.Instance.Progress}/{PlayManager.MaxProgress}";
-        progressText2.text = $"{PlayManager.Instance.Progress}/{PlayManager.MaxProgress}";
+        progressText1.text = $"{PlayManager.Instance.Progress}/{GameManager.Instance.MaxProgress}";
+        progressText2.text = $"{PlayManager.Instance.Progress}/{GameManager.Instance.MaxProgress}";
+    }
+    
+    public void SetStatusText(string text)
+    {
+        statusText1.text = text;
+        statusText2.text = text;
+    }
+
+    public void SetStatusActive(bool active)
+    {
+        statusText1.gameObject.SetActive(active);
+        statusText2.gameObject.SetActive(active);
     }
 
     public void SetUIActive(bool active)

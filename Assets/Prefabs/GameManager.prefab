@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d97cb63dcbede4aa855797b15c0d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPracticeMode: 0
+  maxProgress: 10
+  skipPenalty: 10

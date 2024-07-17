@@ -1,12 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PlayManager : MonoBehaviour
 {
     public static PlayManager Instance { get; private set; }
-    
-    public const int MaxProgress = 10;
-    public const float SkipPenalty = 10f;
 
     public int Progress { get; private set; }
     public float Time { get; private set; }
@@ -24,6 +22,17 @@ public class PlayManager : MonoBehaviour
 
     private void Start()
     {
+        if (GameManager.Instance.IsPracticeMode)
+        {
+            Active = true;
+            Paused = false;
+            Topic = "Practice";
+            UIManager.Instance.SetUIActive(true);
+            UIManager.Instance.SetStatusActive(false);
+            ClearDraw();
+            return;
+        }
+        
         Active = false;
         Paused = false;
         UIManager.Instance.SetUIActive(false);
@@ -42,34 +51,51 @@ public class PlayManager : MonoBehaviour
                 ClearDraw();
             }
 
-            // Pause
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (!GameManager.Instance.IsPracticeMode)
             {
-                // TODO: Pause game
-            }
-        
-            // Correct
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                Progress++;
-                if (Progress >= MaxProgress)
+                // Pause
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    // TODO: Finish game
+                    Paused = true;
+                    UIManager.Instance.SetStatusText("Paused\n\n[ESC] Resume    [Enter] Quit");
+                    UIManager.Instance.SetStatusActive(true);
                 }
-                else
+        
+                // Correct
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
+                    Progress++;
+                    if (Progress >= GameManager.Instance.MaxProgress)
+                    {
+                        Active = false;
+                        var record = TimeSpan.FromSeconds(Time).ToString("mm':'ss");
+                        UIManager.Instance.SetAllText();
+                        UIManager.Instance.SetStatusText($"Clear!\nRecord: {record}\n\n[Enter] Quit");
+                        UIManager.Instance.SetStatusActive(true);
+                        Cursor.visible = true;
+                    }
+                    else
+                    {
+                        NextTopic();
+                    }
+                }
+
+                // Skip
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Time += GameManager.Instance.SkipPenalty;
                     NextTopic();
                 }
-            }
 
-            // Skip
-            if (Input.GetKeyDown(KeyCode.Space))
+                Time += UnityEngine.Time.deltaTime;
+            }
+            else
             {
-                Time += SkipPenalty;
-                NextTopic();
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    // TODO: Quit practice mode
+                }
             }
-
-            Time += UnityEngine.Time.deltaTime;
         }
         else
         {
@@ -77,6 +103,7 @@ public class PlayManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Paused = false;
+                UIManager.Instance.SetStatusActive(false);
             }
             
             // Quit
@@ -89,10 +116,13 @@ public class PlayManager : MonoBehaviour
 
     private IEnumerator StartCountdown()
     {
-        // TODO: Implement countdown logic
-        
-        yield return null;
-
+        UIManager.Instance.SetStatusActive(true);
+        UIManager.Instance.SetStatusText("3");
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.SetStatusText("2");
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.SetStatusText("1");
+        yield return new WaitForSeconds(1f);
         StartGame();
     }
 
@@ -101,6 +131,8 @@ public class PlayManager : MonoBehaviour
         Progress = 0;
         Time = 0f;
         Active = true;
+        Cursor.visible = false;
+        UIManager.Instance.SetStatusActive(false);
         UIManager.Instance.SetUIActive(true);
         NextTopic();
     }
