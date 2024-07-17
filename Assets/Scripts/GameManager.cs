@@ -35,10 +35,12 @@ public class GameManager : MonoBehaviour
 #if !UNITY_EDITOR
         if (Display.displays.Length == 1)
         {
-            // TODO: Implement the logic for a single display
-            Debug.LogError("Single display");
+            Debug.LogError("Please connect a second display and restart the game.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Alert");
+            return;
         }
 #endif
+        Display.displays[1].Activate();
 
         LoadWords();
     }
