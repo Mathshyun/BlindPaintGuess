@@ -63,6 +63,7 @@ public class PlayManager : MonoBehaviour
             // Clear
             if (Input.GetKeyDown(KeyCode.Backspace))
             {
+                UIManager.Instance.SetStatusFadeOnce("Clear", new Color(0.5f, 0.5f, 0.5f));
                 ClearDraw();
             }
 
