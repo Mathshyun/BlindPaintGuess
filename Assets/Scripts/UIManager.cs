@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text timeText1;
     [SerializeField] private TMP_Text timeText2;
     [SerializeField] private TMP_Text topicText1;
+    [SerializeField] private TMP_Text topicText2;
     [SerializeField] private TMP_Text progressText1;
     [SerializeField] private TMP_Text progressText2;
     [SerializeField] private TMP_Text statusText1;
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
     
     private void Update()
     {
+        if (!PlayManager.Instance.Active) return;
+        
         var text = TimeSpan.FromSeconds(PlayManager.Instance.Time).ToString("mm':'ss");
         timeText1.text = text;
         timeText2.text = text;
@@ -47,8 +50,17 @@ public class UIManager : MonoBehaviour
     public void SetAllText()
     {
         topicText1.text = PlayManager.Instance.Topic;
-        progressText1.text = $"{PlayManager.Instance.Progress}/{GameManager.Instance.MaxProgress}";
-        progressText2.text = $"{PlayManager.Instance.Progress}/{GameManager.Instance.MaxProgress}";
+        topicText2.text = PlayManager.Instance.Topic;
+        if (!PlayManager.Instance.IsReviewing)
+        {
+            progressText1.text = $"{PlayManager.Instance.Progress}/{PlayManager.Instance.MaxProgress}";
+            progressText2.text = $"{PlayManager.Instance.Progress}/{PlayManager.Instance.MaxProgress}";
+        }
+        else
+        {
+            progressText1.text = $"{PlayManager.Instance.Progress + 1}/{PlayManager.Instance.MaxProgress}";
+            progressText2.text = $"{PlayManager.Instance.Progress + 1}/{PlayManager.Instance.MaxProgress}";
+        }
     }
     
     public void SetStatusText(string text)
@@ -90,4 +102,6 @@ public class UIManager : MonoBehaviour
         progressText1.gameObject.SetActive(active);
         progressText2.gameObject.SetActive(active);
     }
+
+    public void SetTopicText2Active(bool active) => topicText2.gameObject.SetActive(active);
 }
